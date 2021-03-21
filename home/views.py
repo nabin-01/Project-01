@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 
 # Create your views here.
@@ -22,7 +23,19 @@ def blog_single(request):
     return render(request, 'blog-single.html')
 
 
-def contact(request):
+def Contact(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        sub = request.POST['subject']
+        msg = request.POST['message']
+        data = Contact.objects.create(
+            name=name,
+            email=email,
+            subject=sub,
+            message=msg
+        )
+        data.save()
     return render(request, 'contact.html')
 
 
