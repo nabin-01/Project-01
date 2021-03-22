@@ -1,1 +1,10 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# added
 .idea/
+__pycache__/
+migrations/
+venv/
+db.sqlite3
