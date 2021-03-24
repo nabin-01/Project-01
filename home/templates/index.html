@@ -154,8 +154,9 @@
 						<li class="active" data-filter="*">All</li>
 						<li data-filter=".vector">Vector</li>
 						<li data-filter=".raster">Raster</li>
-						<li data-filter=".ui">UI/UX</li>
+						<li data-filter=".ui/ux">UI/UX</li>
 						<li data-filter=".printing">Printing</li>
+
 					</ul>
 				</div>
 
@@ -284,30 +285,20 @@
 				</div>
 				<div class="row">
 					<div class="active-testimonial">
+						{% for feedback in feedbacks %}
 						<div class="single-testimonial item d-flex flex-row">
 							<div class="thumb">
-								<img class="img-fluid" src="{% static 'img/elements/user1.png' %}" alt="">
+								<img class="img-fluid" src="{{ feedback.image }}" style="border-radius: 50%; height=50px; width=50px;" alt="">
 							</div>
 							<div class="desc">
 								<p>
-									Do you want to be even more successful? Learn to love learning and growth. The more effort you put into improving your skills, the bigger the payoff you.
+									{{ feedback.comment }}
 								</p>
-								<h4>Harriet Maxwell</h4>
-								<p>CEO at Google</p>
+								<h4>{{ feedback.name }}</h4>
+								<p>{{ feedback.post }}</p>
 							</div>
 						</div>
-						<div class="single-testimonial item d-flex flex-row">
-							<div class="thumb">
-								<img class="img-fluid" src="{% static 'img/elements/user2.png' %}" alt="">
-							</div>
-							<div class="desc">
-								<p>
-									A purpose is the eternal condition for success. Every former smoker can tell you just how hard it is to stop smoking cigarettes. However.
-								</p>
-								<h4>Carolyn Craig</h4>
-								<p>CEO at Facebook</p>
-							</div>
-						</div>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
@@ -496,21 +487,11 @@
 			<div class="container">
 				<div class="brand-wrap">
 					<div class="row align-items-center active-brand-carusel justify-content-start no-gutters">
+						{% for brand in brands %}
 						<div class="col single-brand">
-							<a href="#"><img class="mx-auto" src="{% static 'img/l1.png' %}" alt=""></a>
+							<a href="#"><img class="mx-auto" src="{{ brand.image }}" style="height:120px;" alt=""></a>
 						</div>
-						<div class="col single-brand">
-							<a href="#"><img class="mx-auto" src="{% static 'img/l2.png' %}" alt=""></a>
-						</div>
-						<div class="col single-brand">
-							<a href="#"><img class="mx-auto" src="{% static 'img/l3.png' %}" alt=""></a>
-						</div>
-						<div class="col single-brand">
-							<a href="#"><img class="mx-auto" src="{% static 'img/l4.png' %}" alt=""></a>
-						</div>
-						<div class="col single-brand">
-							<a href="#"><img class="mx-auto" src="{% static 'img/l5.png' %}" alt=""></a>
-						</div>
+						{% endfor %}
 					</div>
 				</div>
 			</div>

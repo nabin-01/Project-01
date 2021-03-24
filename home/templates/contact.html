@@ -54,6 +54,7 @@
                 </div>
             </div>
             <div class="col-lg-8">
+                <center><font color="red;"> {{  message }}</font> </center>
                 <form class="form-area contact-form text-right" method="POST">
                     {% csrf_token %}
                     <div class="row">
@@ -72,13 +73,6 @@
                             <button class="genric-btn primary" style="float: right;">Send Message</button>
                         </div>
                     </div>
-                    {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
                 </form>
             </div>
         </div>

@@ -1,14 +1,20 @@
 from django.shortcuts import render
 from .models import *
-from django.contrib import messages
+
 
 # Create your views here.
 def home(request):
-    return render(request, 'index.html')
+    views = dict()
+    views['feedbacks'] = Review.objects.all()
+    # views['projects'] = Project.objects.all()
+    views['brands'] = Brand.objects.all()
+    return render(request, 'index.html', views)
 
 
 def about(request):
-    return render(request, 'about.html')
+    views = dict()
+    views['feedbacks'] = Review.objects.all()
+    return render(request, 'about.html', views)
 
 
 def services(request):
@@ -40,7 +46,9 @@ def contact(request):
         # check entered user data is correct or not by python validators
         # saves form data to DB
         data.save()
-        messages.add_message(request, messages.SUCCESS, '✔️ SUCCESSFUL SUBSCRIPTION')
+        views = dict()
+        views['message'] = 'The form is successfully submitted!'
+        return render(request, 'contact.html', views)
     # if response it render it looks for a HTML
     return render(request, 'contact.html')
 
